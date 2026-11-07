@@ -1,208 +1,247 @@
-
 <!DOCTYPE html>
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Моя цифровая мастерская</title>
+<title>Цифровая мастерская — промпты для работы</title>
 <style>
 *{box-sizing:border-box}
-body{
- margin:0;
- font-family:Arial,sans-serif;
- background:#0b1020;
- color:#f4f5ff;
- line-height:1.6;
-}
-header{
- padding:22px 8%;
- display:flex;
- justify-content:space-between;
- align-items:center;
- border-bottom:1px solid #28304b;
-}
-.logo{font-size:20px;font-weight:bold}
-.logo span{color:#a78bfa}
-nav a{
- color:#c8cce0;
- text-decoration:none;
- margin-left:22px;
- font-size:14px;
-}
-nav a:hover{color:#a78bfa}
-.hero{
- padding:85px 20px 65px;
- text-align:center;
- background:radial-gradient(ellipse at top,#38236d,#0b1020 70%);
-}
-.label{
- color:#b9a2ff;
- letter-spacing:2px;
- font-size:12px;
- text-transform:uppercase;
-}
-h1{font-size:clamp(34px,6vw,58px);line-height:1.15;margin:20px 0}
-.hero p{max-width:650px;margin:0 auto;color:#c4c8dd;font-size:17px}
-.btn{
- display:inline-block;
- margin-top:28px;
- padding:13px 25px;
- border-radius:10px;
- background:#7654df;
- color:white;
- text-decoration:none;
- font-weight:bold;
-}
-section{padding:55px 8%;scroll-margin-top:20px}
-.section-title{text-align:center;margin-bottom:32px}
-.section-title h2{font-size:29px}
-.section-title p{color:#aab1ca}
-.grid{
- display:grid;
- grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
- gap:20px;
-}
-.card{
- background:#151d34;
- border:1px solid #293451;
- border-radius:16px;
- padding:25px;
- transition:.2s;
-}
-.card:hover{transform:translateY(-4px);border-color:#9273ef}
-.card .emoji{font-size:32px}
-.card h3{margin:12px 0 8px}
-.card p{color:#aeb6d0;font-size:14px}
-.card a{color:#b9a2ff;text-decoration:none;font-weight:bold}
-.about{
- background:#111a30;
- text-align:center;
-}
-.about p{max-width:700px;margin:auto;color:#c4c8dd}
-footer{
- padding:30px 15px;
- text-align:center;
- color:#929bb5;
- border-top:1px solid #28304b;
- font-size:13px;
-}
-@media(max-width:650px){
- header{flex-direction:column;gap:12px}
- nav a{margin:0 7px;font-size:12px}
- section{padding:40px 6%}
- .hero{padding:65px 18px}
-}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:Arial,sans-serif;background:#0b1020;color:#f4f5ff;line-height:1.6}
+header{padding:20px 8%;display:flex;justify-content:space-between;align-items:center;gap:18px;border-bottom:1px solid #28304b;position:sticky;top:0;background:#0b1020;z-index:5}
+.logo{font-size:20px;font-weight:bold;white-space:nowrap}.logo span{color:#a78bfa}
+nav{display:flex;gap:20px;flex-wrap:wrap}nav a{color:#c8cce0;text-decoration:none;font-size:14px}nav a:hover{color:#a78bfa}
+.hero{padding:65px 20px 50px;text-align:center;background:radial-gradient(ellipse at top,#38236d,#0b1020 70%)}
+.label{color:#b9a2ff;letter-spacing:2px;font-size:12px;text-transform:uppercase}
+h1{font-size:clamp(32px,5vw,52px);line-height:1.15;margin:16px 0}
+.hero p{max-width:720px;margin:auto;color:#c4c8dd;font-size:17px}
+.btn,.copy-btn{display:inline-block;border:0;border-radius:9px;background:#7654df;color:#fff;padding:11px 17px;font-weight:bold;text-decoration:none;cursor:pointer}
+.btn{margin-top:22px}.btn:hover,.copy-btn:hover{background:#8b6bea}
+section{padding:48px 8%;scroll-margin-top:85px}
+.section-title{text-align:center;margin-bottom:28px}.section-title h2{font-size:28px;margin-bottom:6px}.section-title p{color:#aab1ca;margin-top:0}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px}
+.card{background:#151d34;border:1px solid #293451;border-radius:15px;padding:22px;transition:.2s}
+.card:hover{border-color:#9273ef}
+.card .emoji{font-size:30px}.card h3{margin:9px 0 7px}.card p{color:#aeb6d0;font-size:14px}
+.tool-link{color:#b9a2ff;text-decoration:none;font-weight:bold}
+.intro-note{max-width:850px;margin:0 auto 24px;padding:16px 18px;background:#151d34;border:1px solid #293451;border-radius:12px;color:#cbd1e7}
+.filters{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin:20px 0 28px}
+.filter{border:1px solid #414b6c;background:#151d34;color:#dfe2f2;padding:9px 15px;border-radius:22px;cursor:pointer}
+.filter.active{background:#7654df;border-color:#7654df;color:white}
+.prompt-card{display:flex;flex-direction:column;gap:12px}
+.prompt-card p{margin:0}
+.prompt-text{white-space:pre-wrap;background:#0d1428;border:1px solid #303b5b;border-radius:9px;padding:13px;color:#e2e5f5;font-size:13px;line-height:1.55;flex:1}
+.prompt-card .copy-btn{align-self:flex-start}
+.copy-btn.copied{background:#247a58}
+.about{background:#111a30;text-align:center}.about p{max-width:760px;margin:auto;color:#c4c8dd}
+footer{padding:28px 15px;text-align:center;color:#929bb5;border-top:1px solid #28304b;font-size:13px}
+[hidden]{display:none!important}
+@media(max-width:650px){header{flex-direction:column;padding:16px 5%}nav{justify-content:center;gap:14px}section{padding:38px 5%}.hero{padding:52px 18px}}
 </style>
 </head>
 <body>
-
 <header>
- <div class="logo">✦ Цифровая <span>мастерская</span></div>
- <nav>
-  <a href="#tools">Нейросети</a>
-  <a href="#prompts">Промпты</a>
-  <a href="#guides">Инструкции</a>
- </nav>
+  <div class="logo">✦ Цифровая <span>мастерская</span></div>
+  <nav>
+    <a href="#tools">Нейросети</a>
+    <a href="#prompts">Промпты</a>
+    <a href="#guides">Инструкции</a>
+  </nav>
 </header>
 
 <div class="hero">
- <div class="label">Технологии для жизни и работы</div>
- <h1>Твоя цифровая<br>мастерская</h1>
- <p>Полезные нейросети, готовые промпты и простые инструкции. Изучай технологии и применяй их на практике.</p>
- <a class="btn" href="#tools">Начать знакомство →</a>
+  <div class="label">Технологии для жизни и работы</div>
+  <h1>Твоя цифровая<br>мастерская</h1>
+  <p>Полезные нейросети, готовые запросы и простые инструкции. Выбирай задачу, копируй промпт и адаптируй его под свою работу.</p>
+  <a class="btn" href="#prompts">Перейти к промптам ↓</a>
 </div>
 
 <section id="tools">
- <div class="section-title">
-  <h2>🤖 Нейросети и инструменты</h2>
-  <p>Технологии, которые помогают работать быстрее</p>
- </div>
- <div class="grid">
-  <div class="card">
-   <div class="emoji">✍️</div>
-   <h3>Работа с текстом</h3>
-   <p>Создание статей, писем, идей и деловых документов.</p>
-   <a href="https://chatgpt.com/" target="_blank" rel="noopener">Открыть ChatGPT →</a>
+  <div class="section-title">
+    <h2>🤖 Нейросети и инструменты</h2>
+    <p>Инструменты для повседневной работы</p>
   </div>
-  <div class="card">
-   <div class="emoji">🎨</div>
-   <h3>Создание изображений</h3>
-   <p>Генерация иллюстраций, обложек и визуального контента.</p>
-   <a href="https://www.canva.com/" target="_blank" rel="noopener">Открыть Canva →</a>
+  <div class="grid">
+    <div class="card"><div class="emoji">✍️</div><h3>Работа с текстом</h3><p>Статьи, письма, идеи и деловые документы.</p><a class="tool-link" href="https://chatgpt.com/" target="_blank" rel="noopener">Открыть ChatGPT →</a></div>
+    <div class="card"><div class="emoji">🎨</div><h3>Дизайн и изображения</h3><p>Обложки, иллюстрации и визуальный контент.</p><a class="tool-link" href="https://www.canva.com/" target="_blank" rel="noopener">Открыть Canva →</a></div>
+    <div class="card"><div class="emoji">🎬</div><h3>Создание видео</h3><p>Монтаж роликов и короткий видеоконтент.</p><a class="tool-link" href="https://www.capcut.com/" target="_blank" rel="noopener">Открыть CapCut →</a></div>
+    <div class="card"><div class="emoji">⚙️</div><h3>Работа с проектами</h3><p>Хранение файлов и совместная работа над материалами.</p><a class="tool-link" href="https://github.com/" target="_blank" rel="noopener">Открыть GitHub →</a></div>
   </div>
-  <div class="card">
-   <div class="emoji">🎬</div>
-   <h3>Создание видео</h3>
-   <p>Инструменты для роликов, монтажа и видеоконтента.</p>
-   <a href="https://www.capcut.com/" target="_blank" rel="noopener">Открыть CapCut →</a>
-  </div>
-  <div class="card">
-   <div class="emoji">⚙️</div>
-   <h3>Автоматизация</h3>
-   <p>Упрощение повторяющихся задач и рабочих процессов.</p>
-   <a href="https://github.com/" target="_blank" rel="noopener">Изучить GitHub →</a>
-  </div>
- </div>
 </section>
 
 <section id="prompts">
- <div class="section-title">
-  <h2>💡 Библиотека промптов</h2>
-  <p>Готовые запросы для решения повседневных задач</p>
- </div>
- <div class="grid">
-  <div class="card">
-   <div class="emoji">💼</div>
-   <h3>Для бизнеса</h3>
-   <p>Идеи, анализ аудитории, тексты и продвижение.</p>
+  <div class="section-title">
+    <h2>💡 Библиотека промптов</h2>
+    <p>Готовые запросы для предпринимателей, самозанятых и тех, кто работает на себя</p>
   </div>
-  <div class="card">
-   <div class="emoji">📱</div>
-   <h3>Для контента</h3>
-   <p>Сценарии видео, посты, публикации и заголовки.</p>
+  <div class="intro-note">Как пользоваться: выбери подходящий запрос, нажми «Скопировать», вставь его в ChatGPT или другую текстовую нейросеть и замени слова в квадратных скобках на свои данные. Чем конкретнее исходная информация, тем полезнее будет результат.</div>
+  <div class="filters" aria-label="Фильтр промптов">
+    <button class="filter active" data-filter="all">Все промпты</button>
+    <button class="filter" data-filter="business">Для бизнеса</button>
+    <button class="filter" data-filter="content">Для контента</button>
+    <button class="filter" data-filter="customers">Для клиентов</button>
   </div>
-  <div class="card">
-   <div class="emoji">🏠</div>
-   <h3>Для жизни</h3>
-   <p>Планирование, обучение и решение бытовых задач.</p>
+  <div class="grid" id="promptGrid">
+    <article class="card prompt-card" data-category="business">
+      <div class="emoji">🎯</div><h3>Понять свою аудиторию</h3><p>Когда неясно, кому и что именно предлагать.</p>
+      <div class="prompt-text">Ты — маркетинговый аналитик. Помоги мне описать целевую аудиторию моего дела.
+
+Моя деятельность: [чем занимаюсь]
+Мой продукт или услуга: [что предлагаю]
+Город или регион: [где работаю]
+Средняя цена: [цена, если известна]
+
+Составь 2–3 реалистичных портрета потенциальных клиентов. Для каждого укажи: потребность, главную проблему, критерии выбора, сомнения перед покупкой и где такого клиента можно найти.
+
+Не выдумывай статистику. Если данных недостаточно, сначала задай мне уточняющие вопросы.</div>
+      <button class="copy-btn">Скопировать промпт</button>
+    </article>
+    <article class="card prompt-card" data-category="business">
+      <div class="emoji">💎</div><h3>Сформулировать предложение</h3><p>Чтобы понятно объяснить пользу услуги или товара.</p>
+      <div class="prompt-text">Ты — специалист по упаковке предложений. Помоги сформулировать ясное предложение для моего бизнеса.
+
+Что я продаю: [товар или услуга]
+Для кого: [клиенты]
+Какую задачу клиента решаю: [задача]
+Чем отличаюсь от альтернатив: [отличия, если известны]
+Цена и условия: [информация]
+
+Предложи 5 вариантов короткого предложения. Не обещай гарантированный результат и не используй пустые рекламные фразы. Покажи конкретную пользу простыми словами. После вариантов объясни, какой звучит убедительнее и почему.</div>
+      <button class="copy-btn">Скопировать промпт</button>
+    </article>
+    <article class="card prompt-card" data-category="content">
+      <div class="emoji">📅</div><h3>План публикаций на неделю</h3><p>Чтобы не тратить каждый день время на поиск тем.</p>
+      <div class="prompt-text">Ты — редактор контента для малого бизнеса. Составь план публикаций на 7 дней.
+
+Моя сфера: [сфера]
+Мой продукт или услуга: [что предлагаю]
+Кто мои клиенты: [аудитория]
+Площадка: [ВКонтакте, Telegram, Дзен и т. д.]
+Цель публикаций: [заявки, доверие, узнаваемость]
+
+Сделай таблицу: день, тема, формат, основная мысль и мягкий призыв к действию. Чередуй полезные советы, ответы на вопросы, демонстрацию процесса и предложения услуг. Не повторяй одну и ту же идею.</div>
+      <button class="copy-btn">Скопировать промпт</button>
+    </article>
+    <article class="card prompt-card" data-category="content">
+      <div class="emoji">✍️</div><h3>Написать пост о своей услуге</h3><p>Пост без навязчивой рекламы и сложных формулировок.</p>
+      <div class="prompt-text">Ты — редактор, который пишет понятные и живые тексты для малого бизнеса.
+
+Напиши пост о моей услуге.
+Услуга: [название]
+Для кого она: [клиенты]
+Какую проблему решает: [проблема]
+Что входит: [состав услуги]
+Цена или условия: [если можно указать]
+Площадка: [где опубликую]
+
+Структура: цепляющее, но честное начало; описание ситуации клиента; как услуга помогает; важные условия; спокойный призыв задать вопрос или записаться. Не придумывай факты, отзывы и результаты.</div>
+      <button class="copy-btn">Скопировать промпт</button>
+    </article>
+    <article class="card prompt-card" data-category="content">
+      <div class="emoji">🎥</div><h3>Сценарий короткого видео</h3><p>Идея для Reels, Shorts или клипа.</p>
+      <div class="prompt-text">Ты — сценарист коротких вертикальных видео. Подготовь сценарий на 30–40 секунд для моей сферы.
+
+Тема: [тема]
+Моя аудитория: [кто смотрит]
+Что хочу донести: [главная мысль]
+Площадка: [Reels, Shorts, VK Клипы и т. д.]
+
+Разбей сценарий на 5–7 кадров. Для каждого укажи: длительность, что зритель видит, текст на экране и озвучку. Начни с понятного внимания-захвата, в конце добавь ненавязчивый призыв. Не используй неподтверждённые обещания.</div>
+      <button class="copy-btn">Скопировать промпт</button>
+    </article>
+    <article class="card prompt-card" data-category="customers">
+      <div class="emoji">💬</div><h3>Ответить на сомнение клиента</h3><p>Вежливо ответить на вопрос о цене или пользе.</p>
+      <div class="prompt-text">Ты — консультант по клиентскому общению. Помоги ответить человеку спокойно, уважительно и без давления.
+
+Что предложено клиенту: [товар или услуга]
+Сообщение клиента: [вставь сообщение]
+Что важно уточнить или объяснить: [условия, состав, цена]
+
+Напиши 3 варианта ответа: короткий, дружелюбный и более подробный. Не спорь с клиентом, не манипулируй и не придумывай скидки или гарантии. Если информации не хватает, укажи, что нужно уточнить.</div>
+      <button class="copy-btn">Скопировать промпт</button>
+    </article>
+    <article class="card prompt-card" data-category="customers">
+      <div class="emoji">⭐</div><h3>Попросить отзыв</h3><p>Тактично попросить клиента поделиться впечатлением.</p>
+      <div class="prompt-text">Составь короткое сообщение с просьбой оставить отзыв после покупки или оказания услуги.
+
+Моя сфера: [сфера]
+Что получил клиент: [товар или услуга]
+Где удобно оставить отзыв: [площадка или способ]
+
+Тон — доброжелательный, благодарный, без давления. Сообщение должно быть коротким. Не подсказывай клиенту, какой именно отзыв написать, и не предлагай вознаграждение, если я этого не указал.</div>
+      <button class="copy-btn">Скопировать промпт</button>
+    </article>
+    <article class="card prompt-card" data-category="business">
+      <div class="emoji">🧭</div><h3>Найти, что улучшить в работе</h3><p>Разобрать рутинные задачи и найти точки экономии времени.</p>
+      <div class="prompt-text">Ты — консультант по организации работы малого бизнеса. Помоги найти процессы, которые можно упростить.
+
+Чем я занимаюсь: [деятельность]
+Какие задачи повторяются: [список задач]
+Что отнимает больше всего времени: [описание]
+Какие инструменты уже использую: [список]
+
+Раздели задачи на три группы: можно упростить шаблоном; можно частично поручить нейросети; пока лучше выполнять вручную. Для каждой идеи опиши первый небольшой шаг и возможные риски. Не предлагай автоматизировать действия, где требуется проверка важных данных человеком.</div>
+      <button class="copy-btn">Скопировать промпт</button>
+    </article>
   </div>
- </div>
 </section>
 
 <section id="guides">
- <div class="section-title">
-  <h2>📚 Пошаговые инструкции</h2>
-  <p>Объясняем сложное простыми словами</p>
- </div>
- <div class="grid">
-  <div class="card">
-   <div class="emoji">🚀</div>
-   <h3>Первые шаги в ИИ</h3>
-   <p>Как начать пользоваться нейросетями с нуля.</p>
+  <div class="section-title">
+    <h2>📚 Пошаговые инструкции</h2>
+    <p>Следующий раздел мастерской — практические руководства простыми словами</p>
   </div>
-  <div class="card">
-   <div class="emoji">🎯</div>
-   <h3>Создание контента</h3>
-   <p>Как создавать полезные материалы с помощью ИИ.</p>
+  <div class="grid">
+    <div class="card"><div class="emoji">🚀</div><h3>Первые шаги в ИИ</h3><p>Как начать пользоваться нейросетями с нуля. Материал готовится.</p></div>
+    <div class="card"><div class="emoji">🎯</div><h3>Создание контента</h3><p>Как создавать полезные материалы с помощью ИИ. Материал готовится.</p></div>
+    <div class="card"><div class="emoji">⏱️</div><h3>Экономия времени</h3><p>Как поручать нейросетям рутинные задачи. Материал готовится.</p></div>
   </div>
-  <div class="card">
-   <div class="emoji">⏱️</div>
-   <h3>Экономия времени</h3>
-   <p>Как поручать нейросетям рутинные задачи.</p>
-  </div>
- </div>
 </section>
 
 <section class="about">
- <div class="section-title">
-  <h2>✨ Наша философия</h2>
- </div>
- <p>Не просто рассказываем о технологиях, а тестируем инструменты и ищем решения, которые действительно работают. Новые материалы будут появляться постепенно.</p>
+  <div class="section-title"><h2>✨ Наша философия</h2></div>
+  <p>Мы тестируем цифровые инструменты на практике и объясняем, как применять их в реальных задачах. Важные результаты проверяем, а решения описываем простыми словами.</p>
 </section>
 
-<footer>
- © 2026 Моя цифровая мастерская · Практические решения с ИИ
-</footer>
+<footer>© 2026 Цифровая мастерская · Практические решения с ИИ</footer>
 
+<script>
+const filterButtons = document.querySelectorAll('.filter');
+const promptCards = document.querySelectorAll('.prompt-card');
+filterButtons.forEach(button => {
+  button.addEventListener('click', () => {
+    filterButtons.forEach(item => item.classList.remove('active'));
+    button.classList.add('active');
+    const filter = button.dataset.filter;
+    promptCards.forEach(card => {
+      card.hidden = filter !== 'all' && card.dataset.category !== filter;
+    });
+  });
+});
+document.querySelectorAll('.copy-btn').forEach(button => {
+  button.addEventListener('click', async () => {
+    const prompt = button.previousElementSibling.innerText;
+    try {
+      await navigator.clipboard.writeText(prompt);
+      button.textContent = 'Скопировано ✓';
+      button.classList.add('copied');
+      setTimeout(() => {
+        button.textContent = 'Скопировать промпт';
+        button.classList.remove('copied');
+      }, 1800);
+    } catch (error) {
+      const field = document.createElement('textarea');
+      field.value = prompt;
+      document.body.appendChild(field);
+      field.select();
+      document.execCommand('copy');
+      field.remove();
+      button.textContent = 'Скопировано ✓';
+      button.classList.add('copied');
+    }
+  });
+});
+</script>
 </body>
 </html>
+
