@@ -35,6 +35,7 @@ section{padding:48px 8%;scroll-margin-top:85px}
 .copy-btn.copied{background:#247a58}
 .about{background:#111a30;text-align:center}.about p{max-width:760px;margin:auto;color:#c4c8dd}
 footer{padding:28px 15px;text-align:center;color:#929bb5;border-top:1px solid #28304b;font-size:13px}
+.guide-card ol{padding-left:20px;color:#cbd1e7;font-size:14px}.guide-card li{margin:8px 0}.guide-card strong{color:#f4f5ff}.notice{max-width:900px;margin:24px auto 0;padding:16px 18px;border:1px solid #6b568f;background:#211b38;border-radius:12px;color:#e2dcf5;font-size:14px}.guide-tag{display:inline-block;margin-top:4px;color:#b9a2ff;font-size:12px;font-weight:bold;letter-spacing:.5px}
 [hidden]{display:none!important}
 @media(max-width:650px){header{flex-direction:column;padding:16px 5%}nav{justify-content:center;gap:14px}section{padding:38px 5%}.hero{padding:52px 18px}}
 </style>
@@ -189,13 +190,49 @@ footer{padding:28px 15px;text-align:center;color:#929bb5;border-top:1px solid #2
 <section id="guides">
   <div class="section-title">
     <h2>📚 Пошаговые инструкции</h2>
-    <p>Следующий раздел мастерской — практические руководства простыми словами</p>
+    <p>Короткие руководства: от первого запроса до готового рабочего результата</p>
   </div>
   <div class="grid">
-    <div class="card"><div class="emoji">🚀</div><h3>Первые шаги в ИИ</h3><p>Как начать пользоваться нейросетями с нуля. Материал готовится.</p></div>
-    <div class="card"><div class="emoji">🎯</div><h3>Создание контента</h3><p>Как создавать полезные материалы с помощью ИИ. Материал готовится.</p></div>
-    <div class="card"><div class="emoji">⏱️</div><h3>Экономия времени</h3><p>Как поручать нейросетям рутинные задачи. Материал готовится.</p></div>
+    <article class="card guide-card">
+      <div class="emoji">🚀</div><span class="guide-tag">ИНСТРУКЦИЯ 01</span>
+      <h3>Как получить хороший ответ от нейросети</h3>
+      <p>Необязательно знать специальные команды. Достаточно объяснить задачу и дать исходные данные.</p>
+      <ol>
+        <li><strong>Опиши роль:</strong> «Ты — редактор», «Ты — помощник по организации работы».</li>
+        <li><strong>Сформулируй задачу:</strong> что именно нужно сделать и для кого.</li>
+        <li><strong>Дай контекст:</strong> сфера, продукт, аудитория, ограничения и исходные материалы.</li>
+        <li><strong>Укажи формат:</strong> список, таблица, письмо, план или пошаговая инструкция.</li>
+        <li><strong>Попроси проверить себя:</strong> отметить допущения и задать вопросы, если данных не хватает.</li>
+      </ol>
+    </article>
+    <article class="card guide-card">
+      <div class="emoji">🎯</div><span class="guide-tag">ИНСТРУКЦИЯ 02</span>
+      <h3>Как подготовить публикацию</h3>
+      <p>Используй ИИ как помощника редактора, а не как источник выдуманных фактов.</p>
+      <ol>
+        <li>Определи одну тему и одну пользу для читателя.</li>
+        <li>Передай нейросети факты о товаре или услуге: что входит, для кого и на каких условиях.</li>
+        <li>Попроси предложить несколько заголовков и выбрать самый ясный.</li>
+        <li>Подготовь черновик в нужном тоне и объёме.</li>
+        <li>Проверь цены, даты, характеристики и ссылки. Удали неподтверждённые обещания.</li>
+        <li>Перед публикацией прочитай текст вслух и исправь неестественные фразы.</li>
+      </ol>
+    </article>
+    <article class="card guide-card">
+      <div class="emoji">⏱️</div><span class="guide-tag">ИНСТРУКЦИЯ 03</span>
+      <h3>Как передать нейросети рутинную задачу</h3>
+      <p>Начинай с небольших повторяющихся задач, результат которых легко проверить.</p>
+      <ol>
+        <li>Запиши, какая задача повторяется и сколько времени обычно занимает.</li>
+        <li>Выбери безопасный фрагмент: например, составить план, черновик письма или чек-лист.</li>
+        <li>Подготовь пример хорошего результата и критерии качества.</li>
+        <li>Попроси нейросеть выполнить задачу по этому образцу.</li>
+        <li>Сверь результат с исходными данными и исправь ошибки вручную.</li>
+        <li>Если способ сработал, сохрани удачный запрос как шаблон.</li>
+      </ol>
+    </article>
   </div>
+  <div class="notice"><strong>Важно о безопасности.</strong> Не вставляй в открытые нейросети пароли, коды подтверждения, паспортные и банковские данные, а также персональные данные клиентов и сотрудников. Для примеров замени реальные сведения условными. Ответы ИИ проверяй перед использованием, особенно если речь идёт о деньгах, документах, налогах или обязательствах.</div>
 </section>
 
 <section class="about">
