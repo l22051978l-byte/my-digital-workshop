@@ -25,7 +25,7 @@ section{padding:48px 8%;scroll-margin-top:85px}
 .card .emoji{font-size:30px}.card h3{margin:9px 0 7px}.card p{color:#aeb6d0;font-size:14px}
 .tool-link{color:#b9a2ff;text-decoration:none;font-weight:bold}
 .intro-note{max-width:850px;margin:0 auto 24px;padding:16px 18px;background:#151d34;border:1px solid #293451;border-radius:12px;color:#cbd1e7}
-.filters{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin:20px 0 28px}
+.filters{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin:20px 0 18px}.prompt-search{display:block;width:min(100%,520px);margin:0 auto 26px;padding:13px 16px;border:1px solid #414b6c;border-radius:10px;background:#151d34;color:#f4f5ff;font-size:15px}.prompt-search::placeholder{color:#929bb5}.prompt-search:focus{outline:2px solid #9273ef;outline-offset:2px}
 .filter{border:1px solid #414b6c;background:#151d34;color:#dfe2f2;padding:9px 15px;border-radius:22px;cursor:pointer}
 .filter.active{background:#7654df;border-color:#7654df;color:white}
 .prompt-card{display:flex;flex-direction:column;gap:12px}
@@ -82,6 +82,7 @@ footer{padding:28px 15px;text-align:center;color:#929bb5;border-top:1px solid #2
     <button class="filter" data-filter="content">Для контента</button>
     <button class="filter" data-filter="customers">Для клиентов</button>
   </div>
+  <input class="prompt-search" id="promptSearch" type="search" placeholder="Найти промпт по названию или задаче..." aria-label="Поиск по библиотеке промптов">
   <div class="grid" id="promptGrid">
     <article class="card prompt-card" data-category="business">
       <div class="emoji">🎯</div><h3>Понять свою аудиторию</h3><p>Когда неясно, кому и что именно предлагать.</p>
@@ -245,16 +246,27 @@ footer{padding:28px 15px;text-align:center;color:#929bb5;border-top:1px solid #2
 <script>
 const filterButtons = document.querySelectorAll('.filter');
 const promptCards = document.querySelectorAll('.prompt-card');
+const promptSearch = document.querySelector('#promptSearch');
+let activeFilter = 'all';
+
+function updatePromptList() {
+  const query = promptSearch.value.trim().toLocaleLowerCase('ru');
+  promptCards.forEach(card => {
+    const matchesCategory = activeFilter === 'all' || card.dataset.category === activeFilter;
+    const matchesSearch = !query || card.innerText.toLocaleLowerCase('ru').includes(query);
+    card.hidden = !(matchesCategory && matchesSearch);
+  });
+}
+
 filterButtons.forEach(button => {
   button.addEventListener('click', () => {
     filterButtons.forEach(item => item.classList.remove('active'));
     button.classList.add('active');
-    const filter = button.dataset.filter;
-    promptCards.forEach(card => {
-      card.hidden = filter !== 'all' && card.dataset.category !== filter;
-    });
+    activeFilter = button.dataset.filter;
+    updatePromptList();
   });
 });
+promptSearch.addEventListener('input', updatePromptList);
 document.querySelectorAll('.copy-btn').forEach(button => {
   button.addEventListener('click', async () => {
     const prompt = button.previousElementSibling.innerText;
